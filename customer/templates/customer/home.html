@@ -2,6 +2,7 @@
 {%load cust_filters%}
 {% load static %}
 {% block content %}
+
 <style>
     .navbar {
         margin-bottom: -40px;
@@ -39,6 +40,32 @@
     {%  endif %}
     {%  endfor %}
 </div><!-- container -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i.pinimg.com/originals/1d/99/f4/1d99f4c724b34fe72baa75d0a803819e.jpg" class="d-block w-100" alt="..." style="height: 70vh;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'customer/farm2.jpg' %}" class="d-block w-100" alt="..." style="height: 70vh;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'customer/farm1.jpg' %}" class="d-block w-100" alt="..." style="height: 70vh;">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 <div class="jumbotron" style="margin-bottom:0px;">
     <h1 class="display-4">Welcome to Falling Fruits</h1>
     <p class="lead">A Place where you can buy and sell fresh fruits</p>
@@ -49,7 +76,7 @@
     <h1 class="display-4">How we work?</h1>
     <p class="lead">We directly connects you with the producer/consumer without any involvement of Middlemen</p>
 </div>
-<div class="jumbotron" style="background-color:purple;color:white">
+<div class="jumbotron" style="background-color:purple;color:white; margin-bottom: 0;">
     <h1 class="display-4">What you can sell/buy?</h1>
     <ul class="list-group mt-4" style="text-align:center;font-size:120%">
         <li class="list-group-item list-group-item-primary">Fresh Fruits & Vegetables</li>

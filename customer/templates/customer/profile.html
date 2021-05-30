@@ -9,7 +9,7 @@
         background-color: darkgray;
     }
     .profile-section{
-        background-color:green;
+        background-color:rgb(47, 25, 83);
         color:white;
     }
 </style>
@@ -22,11 +22,11 @@
     <div class="jumbotron">
         <div class="  ml-4 mr-4 py-2 inside">
             <div class="row text-center">
-                <div class="col-12">
-                    <img width="80px" height="80px" src="{{user.profile.image.url}}" class="rounded-circle" style="margin: 0 auto;" />
-                    <h1 style="color:green;">{{username}}</h1>
-                    <div class="profile-section pb-4">
-                        <p>Profile Info</p>
+                <div class="col-12" style="display: flex; flex-direction: column; align-items: center;">
+                    <h1>Profile Info</h1>
+                    <div class="profile-section pb-4 pt-4" style="border-radius: 3%; width: 70%;">
+                        <img width="80px" height="80px" src="{{user.profile.image.url}}" class="rounded-circle" style="margin: 0 auto;" />
+                        <h1 style="color:rgb(255, 255, 255);">{{username|title}}</h1>
                         Name<p class="profile-field"><strong>{{f_name}}&nbsp;{{l_name}}</strong></p>
 
                         Contact<p class="profile-field">{{contact}}</p>
