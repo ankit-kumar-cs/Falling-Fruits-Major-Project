@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\customer",
+    "\\customer\\static",
+    "\\customer\\static\\customer",
+    "\\customer\\templates",
+    "\\customer\\templates\\customer",
+    "\\customer\\templatetags",
+    "\\falling_fruits",
+    "\\media"
+  ],
+  "SelectedNode": "\\db.sqlite3",
+  "PreviewInSolutionExplorer": false
+}
