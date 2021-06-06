@@ -118,44 +118,45 @@ def CartView(request):
 
 @login_required
 def CheckoutView(request):
-    context={}
-    order_qs=Order.objects.filter(user=request.user,ordered=False)
-    if order_qs.exists():
-        order = order_qs[0]
-        context['orders']=order
-        if request.POST:
-            form=AddressForm(request.POST)
-            if form.is_valid():
-                c_name = form.cleaned_data.get('name')
-                street_addr=form.cleaned_data.get('street_address')
-                village=form.cleaned_data.get('village_name')
-                pin_code=form.cleaned_data.get('pincode')
-                contact=form.cleaned_data.get('contact_number')
-                default_addr=form.cleaned_data.get('default')
-                address_obj=Address(
+	context={}
+	order_qs=Order.objects.filter(user=request.user,ordered=False)
+	if order_qs.exists():
+		order = order_qs[0]
+		context['orders']=order
+		if request.POST:
+			form=AddressForm(request.POST)
+			if form.is_valid():
+				c_name = form.cleaned_data.get('name')
+				street_addr=form.cleaned_data.get('street_address')
+				village=form.cleaned_data.get('village_name')
+				pin_code=form.cleaned_data.get('pincode')
+				contact=form.cleaned_data.get('contact_number')
+				default_addr=form.cleaned_data.get('default')
+				time_slot = form.cleaned_data.get('delivery_time_slot')
+				address_obj=Address(
                     user=request.user,
                     name=c_name,
                     street_address=street_addr,
                     village_name=village,
                     contact_number=contact,
                     pincode=pin_code,
-                    default=default_addr
+                    default=default_addr,
+					delivery_time_slot = time_slot
                     )
-                address_obj.save()
-                Order.objects.filter(user=request.user,ordered=False).update(address=address_obj)
-                order_items = order.items.all()
-                order_items.update(ordered=True)
-                for item in order_items:
-                    item.save()
-                Order.objects.filter(user=request.user,ordered=False).update(ordered=True)                
-                return redirect('customer:order-detail-view',)
-        else:
-            form=AddressForm()
-        context['form']=form
-    else:
-        context={}
-    
-    return render(request,'customer/checkout.html',context)
+				address_obj.save()
+				Order.objects.filter(user=request.user,ordered=False).update(address=address_obj)
+				order_items = order.items.all()
+				order_items.update(ordered=True)
+				for item in order_items:
+					item.save()
+				Order.objects.filter(user=request.user,ordered=False).update(ordered=True)                
+				return redirect('customer:order-detail-view',)
+		else:
+			form=AddressForm()
+		context['form']=form
+	else:
+		context={}
+	return render(request,'customer/checkout.html',context)
 
 class OrderDetailView(ListView):
     template_name='customer/order-detail.html'
