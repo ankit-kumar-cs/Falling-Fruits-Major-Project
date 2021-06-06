@@ -17,6 +17,7 @@ urlpatterns = [
     path('remove-from-cart/<slug:slug>/',views.remove_from_cart,name='remove-from-cart'),
     path('remove-single-item-from-cart/<slug:slug>/',views.remove_single_item_from_cart,name='remove-single-from-cart'),
     path('checkout/',views.CheckoutView,name='checkout'),
-    path('order/',OrderDetailView.as_view(),name='order-detail-view')
+    path('order/',OrderDetailView.as_view(),name='order-detail-view'),
+    path('contact/',views.contact_view,name='contact-view')
     #path('profile/update-profile/',views.update_profile,name="update_profile"),
 ]
